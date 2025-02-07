@@ -1,7 +1,8 @@
 package Sessió1;
 
 public class Codi {
-  	private int tipus;
+
+	private int tipus;
 	private int identificador;
 
 	public static final int PERILL = 1;
@@ -23,21 +24,20 @@ public class Codi {
 	public int getterTipus(){return this.tipus;}
 	public int getIdentificador(){return this.identificador;}
 
-	public int setTipus(int canvi){ this.tipus = canvi;}
-	public int setIdentificador(int nouIde){this.identificador = nouIde;}
+	public int setTipus(int canvi){ this.tipus = canvi; return this.tipus;}
+	public int setIdentificador(int nouIde){this.identificador = nouIde; return this.identificador;}
 
 	public String getTipus(){
 
 		switch(tipus){
 		case 1:
 			return "Perill";
-			break;
 		case 2:
 			return "Reglamentació";
-			break;
 		case 3:
 			return "Indicació";
-			break;
+		default: 
+			return "Indicacio";
 		}
 	}
 
@@ -52,4 +52,3 @@ public class Codi {
 	}
 }
 
-}
