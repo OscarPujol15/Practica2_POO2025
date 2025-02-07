@@ -7,90 +7,92 @@ public class Ubicacio {
 	private int numSenyals;
 	private int MAX_SENYALS;
 	private int onEstanSenyals[];
-	
+
 	public Ubicacio(int Maxim, String carrer){
 		this.nomCarrer = carrer;
-		this.senyals [] = new senyals [Maxim];
+		SenyalTransit [] senyals = new SenyalTransit[Maxim];
 		this.numSenyals = 0;
 		this.MAX_SENYALS = Maxim;
-		this.onEstanSenyals [] = new int [Maxim];
+		int onEstanSenyals[] = new int [Maxim];
 	}
-	
+
 	public String getNomCarrer(){return this.nomCarrer;}
 	public int getNumSenyals(){return this.numSenyals;}
-	
+
 	public boolean equals(Ubicacio ubicacio){
-		if(this.nomCarrer.equals(ubicacio.getNomCarrer();)){
-		return true;
-		else{
-		return false;}
-	}
-	
-	public SenyalTransit getSenyal(int quin){
-		if (quin>this.numSenyal){
-			return null;
+		if(this.nomCarrer.equals(ubicacio.getNomCarrer())){
+			return true;
 		}
-		else{
-		return this.senyals[quin];
+			else{
+				return false;}
 		}
-	}
-	
-	public int getNumero(SenyalTransit c){
-		for (int i = 0; i<numSenyals; i++){
-			if(this.senyal [i].equals(ubicacio.getNomCarrer());
+
+		public SenyalTransit getSenyal(int quin){
+			if (quin>this.numSenyals){
+				return null;
+			}
+			else{
+				return this.senyals[quin];
+			}
+		}
+
+		public int getNumero(SenyalTransit c){
+			for (int i = 0; i<numSenyals; i++){
+				if(this.senyals[i].this.getNomCarrer().equals(c.getNomCarrer())){
 				return this.onEstanSenyals[i];
 			}
 		}
 		return -1;
 	}
-	
+
 	public boolean afegirSenyal(SenyalTransit c, int numero){
-		if (this.numSenyal == this.MAX_SENYALS){
-		this.MAX_SENYALS += 10;
-		int onEstanSenyalsDos [] = new int [this.MAX_SENYALS];
-		SenyalTransit senyalsDos [] = new SenyalTransit [this.MAX_SENYALS];
-		for (int i = 0; i<this.MAX_SENYALS; i++){
-			this.senyalsDos[i] = this.senyals[i];
-			this.onEstanSenyalsDos [i] = this.onEstanSenyals [i];
+		if (this.numSenyals == this.MAX_SENYALS){
+			this.MAX_SENYALS += 10;
+			int onEstanSenyalsDos [] = new int [this.MAX_SENYALS];
+			SenyalTransit senyalsDos [] = new SenyalTransit [this.MAX_SENYALS];
+			for (int i = 0; i<this.MAX_SENYALS; i++){
+				senyalsDos[i] = this.senyals[i];
+				onEstanSenyalsDos [i] = this.onEstanSenyals [i];
+			}
+			senyals = senyalsDos;
+			onEstanSenyals = onEstanSenyalsDos;
 		}
-		senyals = this.senyalsDos;
-		onEstanSenyals = this.onEstanSenyalsDos;
-		}
-		
+
 		for (int i = 0; i<this.numSenyals; i++){
-			if (this.senyals.get(i).getcodi().equals(c.getCodi())){
-			return false;
+			if (this.senyals[i].getCodi().equals(c.getCodi())){
+				return false;
 			}
 			else{
 				if (this.senyals [i] == null){
-				this.senyls [i] = c;
-				this.onEstanSenyals[i] = numero;
-				return true;
-				
+					this.senyals [i] = c;
+					this.onEstanSenyals[i] = numero;
+					return true;
+
 				}
 			}
 		}
 	}
-	
-	boolean treureSenyal(SenyalTransit c){
+
+	public boolean treureSenyal(SenyalTransit c){
 		for (int i = 0; i<this.numSenyals; i++){
-			if (this.senyals.get(i).getcodi().equals(c.getCodi())){
-			this.senyal[i] = this.senyal[numSenyals-1];
-			this.onEstanSenyals [i] = this.onEstanSenyals[numSenyals-1];
-			this.numSenyals--;
-			this.senyals [numSenyals] = null;
-			this.onEstanSenyals[numsenyals] = -1;
-			return true;
-			}
-			else{
-			return false;
+			if (this.senyals[i].getCodi().equals(c.getCodi())){
+				this.senyals[i] = this.senyals[numSenyals-1];
+				this.onEstanSenyals [i] = this.onEstanSenyals[numSenyals-1];
+				this.numSenyals--;
+				this.senyals [numSenyals] = null;
+				this.onEstanSenyals[this.numSenyals] = -1;
+				return true;
 			}
 		}
+		return false;
+		
 	}
-	
-	String getSenyals(Jconsole){
+
+	public String getSenyals(){
 		for (int i = 0; i<numSenyals; i++){
-		console.print (this.senyal.get(i).getcodi() + " - ");
+			String Identificador;
+			Identificador = (this.senyals[i]. getCodi() + " - ");
+			return Identificador;
 		}
 	}
 }
