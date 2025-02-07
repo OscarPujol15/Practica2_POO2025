@@ -7,13 +7,18 @@ public class SenyalTransit {
 	
 	public SenyalTransit(Codi codi, Ubicacio ubicacio, int anyColocacio){
 		this.codi = codi;
-		if (!afegirSenyal(SenyalTransit)){
+		Random numero = new Random();
+		if (ubicacio==null) {
+			this.anyUbicacio = 0;
+		}
+		else if (!ubicacio.afegirSenyal(this,numero.nextInt(1,300))){
 			this.ubicacio = null;
+			this.anyUbicacio = 0;
 		}
 		else {
 			this.ubicacio = ubicacio;
+			this.anyUbicacio = anyColocacio;
 		}
-		this.anyUbicacio = anyColocacio;
 	}
 	
 	public String donaTipusSenyal(){
@@ -21,30 +26,37 @@ public class SenyalTransit {
 	}
 	
 	public boolean retirarViaPublica(){
-		if (ubicacio.treureSenyal(SenyalTransit)){
-		setUbicacio(null);
-			if (this.anyubicacio!=0){
+		if (ubicacio.treureSenyal(this)){
+			if (this.ubicacio!=null) {
+				this.ubicacio = null;
 				anyUbicacio = 0;
+				return true;
 			}
 		}
+		return false;
 	}
 	
 	public String getUbicacio(){ 
 		if (this.ubicacio != null){
-		return ubicacio. + ubicacio.}
+		return ubicacio.getNomCarrer() + ubicacio.getNumero(this);}
 		else{
 		return null;
 		}
-		// Preguntar
 	}
 	
 	public boolean canviarUbicacio (Ubicacio novaUbicacio){
-		if(ubicacio.afegirSenyal(SenyalTransit, int)){
-			ubicacio.treureSenyal(SenyalTransit);
-			this.ubicacio = novaUbicacio;
-			return true; //Preguntar
+		
+
+		if(!ubicacio.afegirSenyal(this,novaUbicacio.getNumero(this))){
+			return false;
 		}
-	}
+				else {
+					ubicacio.treureSenyal(this);
+					this.ubicacio = novaUbicacio;
+					return true;
+				}
+			}
 	
-	public Codi getCodi(){return getIdentificador();}
+	public Codi getCodi(){return this.codi;}
 }
+
