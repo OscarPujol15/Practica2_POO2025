@@ -1,4 +1,6 @@
-package Sessió1;
+package Sessio1;
+
+import java.util.Random;
 
 public class SenyalTransit {
 	private Codi codi;
@@ -45,8 +47,6 @@ public class SenyalTransit {
 	}
 	
 	public boolean canviarUbicacio (Ubicacio novaUbicacio){
-		
-
 		if(!ubicacio.afegirSenyal(this,novaUbicacio.getNumero(this))){
 			return false;
 		}
@@ -59,4 +59,3 @@ public class SenyalTransit {
 	
 	public Codi getCodi(){return this.codi;}
 }
-
