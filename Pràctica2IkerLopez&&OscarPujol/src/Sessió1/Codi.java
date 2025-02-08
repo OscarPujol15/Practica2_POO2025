@@ -1,11 +1,11 @@
-package Sessio1;
+package Sessió_1;
 
 public class Codi {
 
 	private int tipus;
 	private int identificador;
 
-	public static final int PERILL = 1;
+	public static final int ADVERTENCIA = 1;
 	public static final int REGLAMENTACIO = 2;
 	public static final int INDICACIO = 3;
 
@@ -31,14 +31,15 @@ public class Codi {
 
 		switch(tipus){
 		case 1:
-			return "Perill";
+			return "Advertencia";
 		case 2:
 			return "Reglamentació";
 		case 3:
 			return "Indicació";
-		default: 
-			return "Indicacio";
+		default:
+			return null;
 		}
+		
 	}
 
 	public boolean equals(Codi c){
@@ -50,4 +51,9 @@ public class Codi {
 		}
 
 	}
+
+    public String toString() {
+        return "Codi{" + "tipus=" + tipus + ", identificador=" + identificador + '}';
+    }
+    
 }

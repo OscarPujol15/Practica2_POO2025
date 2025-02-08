@@ -1,4 +1,4 @@
-package Sessio1;
+package Sessió_1;
 
 import java.util.Random;
 
