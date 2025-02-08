@@ -1,4 +1,4 @@
-package Sessió1;
+package Sessio1;
 
 public class Ubicacio {
 
@@ -38,7 +38,7 @@ public class Ubicacio {
 
 		public int getNumero(SenyalTransit c){
 			for (int i = 0; i<numSenyals; i++){
-				if(this.senyals[i].this.getNomCarrer().equals(c.getNomCarrer())){
+				if(this.senyals[i].equals(c)){
 				return this.onEstanSenyals[i];
 			}
 		}
@@ -62,16 +62,14 @@ public class Ubicacio {
 			if (this.senyals[i].getCodi().equals(c.getCodi())){
 				return false;
 			}
-			else{
-				if (this.senyals [i] == null){
+			else if(this.senyals [i] == null){
 					this.senyals [i] = c;
 					this.onEstanSenyals[i] = numero;
+					this.numSenyals += 1;
 					return true;
-
 				}
 			}
 		}
-	}
 
 	public boolean treureSenyal(SenyalTransit c){
 		for (int i = 0; i<this.numSenyals; i++){
@@ -89,10 +87,13 @@ public class Ubicacio {
 	}
 
 	public String getSenyals(){
-		for (int i = 0; i<numSenyals; i++){
-			String Identificador;
-			Identificador = (this.senyals[i]. getCodi() + " - ");
+		String Identificador= " ";
+			for (int i = 0; i<numSenyals; i++){
+				Identificador += this.senyals[i]. getCodi();
+				if (i<numSenyals-1) {
+				Identificador += " - ";
+				}
+			}
 			return Identificador;
 		}
 	}
-}
