@@ -1,4 +1,4 @@
-package Sessió1;
+package Sessio1;
 
 public class Codi {
 
@@ -51,4 +51,3 @@ public class Codi {
 
 	}
 }
-
