@@ -1,0 +1,104 @@
+package Sessió_2;
+
+import java.util.GregorianCalendar;
+import java.util.Random;
+
+public abstract class SenyalTransit {
+	// Constants for standard dimensions
+	public static final double DIAMETRE_CIRCULAR = 50.0; // Circular signals
+	public static final double COSTAT_TRIANGULAR = 70.0; // Triangular signals
+	public static final double ALTURA_RECTANGULAR = 132.0; // Rectangular signals height
+	public static final double AMPLADA_RECTANGULAR = 93.0; // Rectangular signals width
+
+	protected int contAdvertencia = 0;
+	protected int contReglamentacio = 0;
+	protected int contIndicacio = 0;
+
+	private Codi codi;
+	private Ubicacio ubicacio;
+	private int anyUbicacio;
+
+	public SenyalTransit(Codi codi, Ubicacio ubicacio, int anyColocacio) {
+		this.codi = codi;
+		if (ubicacio == null) {
+			this.ubicacio = null;
+			this.anyUbicacio = 0;
+		} else {
+			Random numero = new Random();
+			this.ubicacio = ubicacio;
+			if (ubicacio.afegirSenyal(this, numero.nextInt(1, 300))) {
+				this.anyUbicacio = anyColocacio;
+			} else {
+				this.ubicacio = null;
+				this.anyUbicacio = 0;
+			}
+		}
+	}
+
+	public SenyalTransit(Codi codi, Ubicacio ubicacio){
+		GregorianCalendar avui = new GregorianCalendar();
+		int anyActual = avui.get(1); 
+		this(codi, ubicacio, anyActual);
+	}
+
+	public SenyalTransit(Codi codi){
+		GregorianCalendar avui = new GregorianCalendar();
+		int anyActual = avui.get(1);
+		this(codi, null, anyActual);
+	}                                                   
+
+	public abstract float area();
+
+	public boolean retirarViaPublica() {
+		if (this.ubicacio != null && ubicacio.treureSenyal(this)) {
+			this.ubicacio = null;
+			anyUbicacio = 0;
+			return true;
+		}
+		return false;
+	}
+
+	public int retirarViaPublica(SenyalTransit tot[]) { 
+		int cont = 0;
+		for (int i = 0; i < tot.length; i++) {
+			if (tot[i] != null && tot[i].retirarViaPublica()) { 
+				cont++;
+			}
+		}
+		return cont;
+	}
+
+
+	public String getUbicacio() { 
+		if (this.ubicacio != null) {
+			return ubicacio.getNomCarrer() + " " + ubicacio.getNumero(this);
+		}
+		return null;
+	}
+
+	public boolean canviarUbicacio(Ubicacio novaUbicacio) {
+		if (novaUbicacio == null || this.ubicacio == null) {
+			return false;
+		}
+		Random numero = new Random();
+		if (novaUbicacio.afegirSenyal(this, numero.nextInt(1, 300))) {
+			this.ubicacio.treureSenyal(this);
+			this.ubicacio = novaUbicacio;
+			return true;
+		}
+		return false;
+	}
+
+	public Codi getCodi(){return this.codi;}
+	public int getContAdvertencia() {return this.contAdvertencia;}
+	public int getContReglamentacio() {return this.contReglamentacio;}
+	public int getContIndicacio() {return this.contIndicacio;}
+	
+	public String toString() {
+	    return "SenyalTransit " +
+	           "codi: " + this.codi +
+	           ", ubicacio: " + this.ubicacio +
+	           ", anyUbicacio: " + this.anyUbicacio;
+	}
+
+}
