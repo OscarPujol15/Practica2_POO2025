@@ -35,17 +35,20 @@ public abstract class SenyalTransit {
 		}
 	}
 
-	public SenyalTransit(Codi codi, Ubicacio ubicacio){
-		GregorianCalendar avui = new GregorianCalendar();
-		int anyActual = avui.get(1); 
-		this(codi, ubicacio, anyActual);
-	}
+	public SenyalTransit(Codi codi, Ubicacio ubicacio) {
+		this(codi, ubicacio, obtenirAnyActual());
+    }
 
-	public SenyalTransit(Codi codi){
-		GregorianCalendar avui = new GregorianCalendar();
-		int anyActual = avui.get(1);
-		this(codi, null, anyActual);
-	}                                                   
+	public SenyalTransit(Codi codi) {
+        this(codi, null, obtenirAnyActual());
+    }       
+	
+	private static int obtenirAnyActual() {
+	        GregorianCalendar avui = new GregorianCalendar();
+	        int anyActual = avui.get(1);
+	        return anyActual;
+	       
+	    }            
 
 	public abstract float area();
 
