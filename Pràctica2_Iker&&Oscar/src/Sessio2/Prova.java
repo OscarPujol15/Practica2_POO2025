@@ -19,7 +19,7 @@ public class Prova {
 
         for (int i = 0; i < senyals.length; i++) {
             int identificador = i; 
-            int tipus = random.nextInt(3) + 1; 
+            int tipus = random.nextInt(1,4); 
             Codi codi = new Codi(identificador, tipus); 
             Ubicacio ubicacio = new Ubicacio(random.nextInt(10), NOM_CARRERS[random.nextInt(NOM_CARRERS.length)]);
             int anyColocacio = 2000 + random.nextInt(23);
