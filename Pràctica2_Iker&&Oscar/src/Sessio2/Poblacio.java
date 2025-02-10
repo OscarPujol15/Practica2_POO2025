@@ -19,8 +19,8 @@ public class Poblacio {
 
 	public int getQuants(char inici) { 
 		int contador = 0;
-		char upperInici = Character.toUpperCase(inici); 
-		int idx = upperInici - 65;
+		char Inici = Character.toUpperCase(inici); 
+		int idx = Inici - 65;
 		
 		 if (idx < 0 || idx >= 26) {
 	            return 0;
