@@ -10,9 +10,9 @@ public abstract class SenyalTransit {
 	public static final double ALTURA_RECTANGULAR = 132.0; 
 	public static final double AMPLADA_RECTANGULAR = 93.0; 
 
-	protected int contAdvertencia = 0;
-	protected int contReglamentacio = 0;
-	protected int contIndicacio = 0;
+	protected static int contAdvertencia = 0;
+	protected static int contReglamentacio = 0;
+	protected static int contIndicacio = 0;
 
 	private Codi codi;
 	private Ubicacio ubicacio;
@@ -93,9 +93,9 @@ public abstract class SenyalTransit {
 	}
 
 	public Codi getCodi(){return this.codi;}
-	public int getContAdvertencia() {return this.contAdvertencia;}
-	public int getContReglamentacio() {return this.contReglamentacio;}
-	public int getContIndicacio() {return this.contIndicacio;}
+	public int getContAdvertencia() {return contAdvertencia;}
+	public int getContReglamentacio() {return contReglamentacio;}
+	public int getContIndicacio() {return contIndicacio;}
 	
 	public String toString() {
 	    return "SenyalTransit " +
