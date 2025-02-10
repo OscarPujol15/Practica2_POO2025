@@ -46,27 +46,33 @@ public class Ubicacio {
 	}
 
 	public boolean afegirSenyal(SenyalTransit c, int numero){
-		if (this.numSenyals == this.MAX_SENYALS){
-			this.MAX_SENYALS += 10;
-			int onEstanSenyalsDos [] = new int [this.MAX_SENYALS];
-			SenyalTransit senyalsDos [] = new SenyalTransit [this.MAX_SENYALS];
-			for (int i = 0; i<this.MAX_SENYALS; i++){
-				senyalsDos[i] = this.senyals[i];
-				onEstanSenyalsDos [i] = this.onEstanSenyals [i];
-			}
-			senyals = senyalsDos;
-			onEstanSenyals = onEstanSenyalsDos;
-		}
-		
-		for (int i =0; i<this.numSenyals; i++) {
-			if (this.senyals[i].getCodi().equals(c.getCodi())) {
-				return false;
-			}		
-		}
-		c = senyals[numSenyals];
-		numero = onEstanSenyals[numSenyals];
-		this.numSenyals++;
-		return true;	
+		 if (c == null) {
+             return false;
+         }
+
+
+         for (int i = 0; i < numSenyals; i++) {
+             if (senyals[i] != null && senyals[i].getCodi().equals(c.getCodi())) {
+                 return false;
+             }
+         }
+
+         if (numSenyals >= MAX_SENYALS) {
+             this.MAX_SENYALS += 10;
+             SenyalTransit[] SenyalsDos = new SenyalTransit[MAX_SENYALS];
+             int[] OnEstanSenyalsDos = new int[MAX_SENYALS];
+             
+             for (int i = 0; i < numSenyals; i++) {
+                 SenyalsDos[i] = this.senyals[i];
+                 OnEstanSenyalsDos[i] = this.onEstanSenyals[i];
+             }
+             this.senyals = SenyalsDos;
+             this.onEstanSenyals = OnEstanSenyalsDos;
+         }
+         senyals[numSenyals] = c;
+         onEstanSenyals[numSenyals] = numero;
+         numSenyals++;
+         return true;	
 		}
 	
 
