@@ -8,7 +8,7 @@ public class Reglamentacio extends SenyalTransit{
 	public Reglamentacio(Codi codi, Ubicacio ubicacio, int anyColocacio, String significatSenyal) {
 		super(codi, ubicacio, anyColocacio);
 		this.significatSenyal = significatSenyal;
-		this.contReglamentacio++;
+		contReglamentacio++;
 		this.diametre = DIAMETRE_CIRCULAR;
 	}
 	
@@ -30,7 +30,7 @@ public class Reglamentacio extends SenyalTransit{
 				", diametre: " + this.diametre +
 				", area: " + this.area() +
 				", descripció: " + this.significatSenyal +
-				", quantitat: " + this.contReglamentacio;
+				", quantitat: " + contReglamentacio;
 	}
 
 	
