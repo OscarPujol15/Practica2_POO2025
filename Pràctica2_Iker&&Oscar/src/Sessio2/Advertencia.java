@@ -8,7 +8,7 @@ package Sessio2;
 		public Advertencia(Codi codi, Ubicacio ubicacio, int anyColocacio, String significatSenyal) {
 			super(codi, ubicacio, anyColocacio);
 			this.significatSenyal = significatSenyal;
-			this.contAdvertencia++;
+			contAdvertencia++;
 			this.costat = COSTAT_TRIANGULAR;
 		}
 
@@ -30,7 +30,7 @@ package Sessio2;
 					", costat: " + this.costat +
 					", area: " + this.area() +
 					", descripció: " + this.significatSenyal +
-					", quantitat: " + this.contAdvertencia;
+					", quantitat: " + contAdvertencia;
 		}
 
 	}
