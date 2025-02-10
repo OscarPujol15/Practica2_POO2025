@@ -8,7 +8,7 @@ public class Indicacio extends SenyalTransit{
 	public Indicacio(Codi codi, Ubicacio ubicacio, int anyColocacio, String significatSenyal) {
 		super(codi, ubicacio, anyColocacio);
 		this.significatSenyal = significatSenyal;
-		this.contIndicacio++;
+		contIndicacio++;
 		this.altura = ALTURA_RECTANGULAR;
 		this.amplada = AMPLADA_RECTANGULAR;
 	}
@@ -34,6 +34,6 @@ public class Indicacio extends SenyalTransit{
 				", costat: " + this.amplada +
 				", area: " + this.area() +
 				", descripció: " + this.significatSenyal +
-				", quantitat: " + this.contIndicacio;
+				", quantitat: " + contIndicacio;
 	}
 }
