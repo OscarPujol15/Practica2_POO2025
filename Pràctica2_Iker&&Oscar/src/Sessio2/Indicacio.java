@@ -1,4 +1,4 @@
-package Sessio2;
+package Sessió_2;
 
 public class Indicacio extends SenyalTransit{
 	
@@ -34,6 +34,6 @@ public class Indicacio extends SenyalTransit{
 				", costat: " + this.amplada +
 				", area: " + this.area() +
 				", descripció: " + this.significatSenyal +
-				", quantitat: " + contIndicacio;
+				", quantitat de Indicació: " + contIndicacio;
 	}
 }
