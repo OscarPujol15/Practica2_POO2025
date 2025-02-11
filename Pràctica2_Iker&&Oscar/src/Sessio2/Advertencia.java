@@ -1,4 +1,4 @@
-package Sessio2;
+package Sessió_2;
 
 	public class Advertencia extends SenyalTransit{
 
@@ -29,9 +29,7 @@ package Sessio2;
 			return super.toString() +
 					", costat: " + this.costat +
 					", area: " + this.area() +
-					", descripció: " + this.significatSenyal +
-					", quantitat: " + contAdvertencia;
+					", descripció: " + this.significatSenyal;
 		}
 
 	}
-
