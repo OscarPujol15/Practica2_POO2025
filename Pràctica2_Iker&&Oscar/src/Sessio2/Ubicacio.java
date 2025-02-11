@@ -1,4 +1,4 @@
-package Sessio2;
+package Sessió_2;
 
 public class Ubicacio {
 
@@ -18,6 +18,7 @@ public class Ubicacio {
 
 	public String getNomCarrer(){return this.nomCarrer;}
 	public int getNumSenyals(){return this.numSenyals;}
+	public int getMaxSenyals(){return this.MAX_SENYALS;}
 
 	public boolean equals(Ubicacio ubicacio){
 		if(this.nomCarrer.equals(ubicacio.getNomCarrer())){
@@ -45,34 +46,36 @@ public class Ubicacio {
 		return -1;
 	}
 
-    public boolean afegirSenyal(SenyalTransit c, int numero) {
-    	 if (c == null) {
-             return false;
-         }
+    public boolean afegirSenyal(SenyalTransit senyal, int numero) {
+        if (senyal == null) {
+            return false;
+        }
 
+        // Comprobar si ya existe
+        for (int i = 0; i < numSenyals; i++) {
+            if (senyals[i] != null && senyals[i].getCodi().equals(senyal.getCodi())) {
+                return false;
+            }
+        }
 
-         for (int i = 0; i < numSenyals; i++) {
-             if (senyals[i] != null && senyals[i].getCodi().equals(c.getCodi())) {
-                 return false;
-             }
-         }
+        // Ampliar si es necesario
+        if (numSenyals >= MAX_SENYALS) {
+            this.MAX_SENYALS += 10;
+            SenyalTransit[] newSenyals = new SenyalTransit[MAX_SENYALS];
+            int[] newOnEstanSenyals = new int[MAX_SENYALS];
+            
+            for (int i = 0; i < numSenyals; i++) {
+                newSenyals[i] = this.senyals[i];
+                newOnEstanSenyals[i] = this.onEstanSenyals[i];
+            }
+            this.senyals = newSenyals;
+            this.onEstanSenyals = newOnEstanSenyals;
+        }
 
-         if (numSenyals >= MAX_SENYALS) {
-             this.MAX_SENYALS += 10;
-             SenyalTransit[] SenyalsDos = new SenyalTransit[MAX_SENYALS];
-             int[] OnEstanSenyalsDos = new int[MAX_SENYALS];
-             
-             for (int i = 0; i < numSenyals; i++) {
-                 SenyalsDos[i] = this.senyals[i];
-                 OnEstanSenyalsDos[i] = this.onEstanSenyals[i];
-             }
-             this.senyals = SenyalsDos;
-             this.onEstanSenyals = OnEstanSenyalsDos;
-         }
-         senyals[numSenyals] = c;
-         onEstanSenyals[numSenyals] = numero;
-         numSenyals++;
-         return true;
+        senyals[numSenyals] = senyal;
+        onEstanSenyals[numSenyals] = numero;
+        numSenyals++;
+        return true;
     }
 
 	public boolean treureSenyal(SenyalTransit c){
