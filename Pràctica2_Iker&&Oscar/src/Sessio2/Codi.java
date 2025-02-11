@@ -1,4 +1,4 @@
-package Sessio2;
+package Sessió_2;
 
 public class Codi {
 
