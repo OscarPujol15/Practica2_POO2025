@@ -1,4 +1,4 @@
-package Sessio2;
+package Sessió_2;
 
 public class Reglamentacio extends SenyalTransit{
 	
@@ -30,7 +30,7 @@ public class Reglamentacio extends SenyalTransit{
 				", diametre: " + this.diametre +
 				", area: " + this.area() +
 				", descripció: " + this.significatSenyal +
-				", quantitat: " + contReglamentacio;
+				", quantitat de Reglamentació: " + contReglamentacio;
 	}
 
 	
