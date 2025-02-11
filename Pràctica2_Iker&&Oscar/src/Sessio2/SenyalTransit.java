@@ -1,4 +1,4 @@
-package Sessio2;
+package Sessió_2;
 
 import java.util.GregorianCalendar;
 import java.util.Random;
@@ -98,10 +98,10 @@ public abstract class SenyalTransit {
 	public int getContIndicacio() {return contIndicacio;}
 	
 	public String toString() {
-	    return "SenyalTransit " +
-	           "codi: " + codi.getIdentificador() +
-	           ", ubicacio: " + ubicacio.getNomCarrer() +
-	           ", anyUbicacio: " + this.anyUbicacio;
+	    return "SenyalTransit {\n" +
+	           "  Codi: " + codi.getIdentificador() + ",\n" +
+	           "  Ubicacio: " + ubicacio.getNomCarrer() + ",\n" +
+	           "  Any Ubicacio: " + this.anyUbicacio + ",\n" ;
 	}
 
 }
