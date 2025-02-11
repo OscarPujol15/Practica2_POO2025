@@ -1,4 +1,4 @@
-package Sessio2;
+package Sessió_2;
 
 public class Poblacio {
 
@@ -20,19 +20,21 @@ public class Poblacio {
 	public int getQuants(char inici) { 
 		int contador = 0;
 		char Inici = Character.toUpperCase(inici); 
-		int idx = Inici - 65;
-		
-		 if (idx < 0 || idx >= 26) {
-	            return 0;
-	        }
+		int idx = (int) Inici - 65;
 
-		 for (int i = 0; i < comptador[idx]; i++) {
-	            if (magatzem[idx][i] != null) {
-	                contador++;
-	            }
-	        }
-	        return contador;
-	    }
+		if (idx < 0 || idx >= 26) {
+			return 0;
+		}
+
+		for (int i = 0; i < comptador[idx]; i++) {
+			if (magatzem[idx][i] != null) {
+				contador++;
+
+			}
+		}
+
+		return contador;
+	}
 
 	public int getQuants() {
 		int quants = 0;
@@ -51,19 +53,20 @@ public class Poblacio {
 
 		int j = 0;
 		boolean equals = false;
-		while (magatzem[idx][j] != null) {
+		while (j < comptador[idx]) {
 			if (c.equals(magatzem[idx][j])) {
 				equals = true;
+				System.out.print("Entra - ");
+				return false;
 			}
 			j++;
 		}
+		// AQUI ESTA EL ERROR
+		if (comptador[idx] == magatzem[idx].length) {return false;} 
 
-		if (getQuants(inicial) < comptador[idx] && c != null && !equals) {
-			magatzem[idx][getQuants(inicial)] = c;
-			comptador[idx] += 1;
-			return true;
-		}
-		return false;
+		magatzem[idx][comptador[idx]] = c;
+		comptador[idx] += 1;
+		return true;
 	}
 
 	public boolean eliminarUbicacio(Ubicacio c) {
@@ -72,10 +75,11 @@ public class Poblacio {
 		int idx = inicial - 65;
 
 		for (int j = 0; j < comptador[idx]; j++) {
-			if (magatzem[idx][j].equals(c)) {
-				magatzem[idx][j] = magatzem[idx][comptador[idx] - 1];
-				magatzem[idx][comptador[idx] - 1] = null; 
-				comptador[idx]--;
+			if (c.equals(magatzem[idx][j])){
+				// Move the last filled component to the current position
+				magatzem[idx][j] = magatzem[idx][comptador[idx] - 1]; // ultima posicion
+				magatzem[idx][comptador[idx] - 1] = null; // pone ex-ultima ubicacion a null
+				comptador[idx]--; // le baja uno al contador porque ya hemos eliminado
 				return true;
 			}
 		}
@@ -86,11 +90,11 @@ public class Poblacio {
 		int cont = 0;
 		for (int i = 0; i < 26; i++) {
 			int j = 0;
-			while(magatzem[i][j]!= null){
+			while(j<comptador[i]){
 				if (magatzem[i][j].getNumSenyals() == 0 && eliminarUbicacio(magatzem[i][j])) {
 					cont++;
 				}
-				j++;
+				else {j++;}
 			}
 		}
 		return cont;
@@ -132,7 +136,7 @@ public class Poblacio {
 						else if(tipus == 3 && senyal instanceof Indicacio) {
 							contIndicacio++;
 						}
-	                    
+
 					}
 				}
 			}
@@ -145,7 +149,7 @@ public class Poblacio {
 		case 3:
 			return contIndicacio;
 		}
-		
+
 		return -1;
 
 	}
