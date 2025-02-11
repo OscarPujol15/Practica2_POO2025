@@ -1,81 +1,117 @@
-package Sessio2;
-
-import java.util.Random;
+package Sessió_2;
 
 public class Prova {
 
     public static void main(String[] args) {
-        String[] NOM_CARRERS = {
-            "Carrer de la Pau", "Carrer de la Llum", "Carrer del Sol", "Carrer de la Lluna",
-            "Carrer de les Flors", "Carrer de l'Aigua", "Carrer del Vent", "Carrer de la Terra",
-            "Carrer del Foc", "Carrer de l'Aire"
-        };
+        // Creem alguns objectes bàsics per començar
+    	Ubicacio ubicacio1 = new Ubicacio(101, "Avinguda Diagonal");
+    	Ubicacio ubicacio2 = new Ubicacio(102, "Barceloneta");
+    	Ubicacio ubicacio3 = new Ubicacio(103, "Carrer d'Aragó");
+    	Ubicacio ubicacio21 = new Ubicacio(103, "Carrer de Felip II");
+    	Ubicacio ubicacio4 = new Ubicacio(104, "Diagonal Mar");
+    	Ubicacio ubicacio5 = new Ubicacio(105, "El Born");
+    	Ubicacio ubicacio6 = new Ubicacio(106, "Francesc Macià");
+    	Ubicacio ubicacio7 = new Ubicacio(107, "Gràcia");
+    	Ubicacio ubicacio8 = new Ubicacio(108, "Hospitalet de Llobregat");
+    	Ubicacio ubicacio9 = new Ubicacio(109, "Joanic");
+    	Ubicacio ubicacio10 = new Ubicacio(110, "La Rambla");
+    	Ubicacio ubicacio11 = new Ubicacio(111, "Montjuïc");
+    	Ubicacio ubicacio12 = new Ubicacio(112, "Nou Barris");
+    	Ubicacio ubicacio13 = new Ubicacio(113, "Passeig de Gràcia");
+    	Ubicacio ubicacio14 = new Ubicacio(114, "Quatre Camins");
+    	Ubicacio ubicacio15 = new Ubicacio(115, "Raval");
+    	Ubicacio ubicacio16 = new Ubicacio(116, "Sagrada Família");
+    	Ubicacio ubicacio17 = new Ubicacio(117, "Tibidabo");
+    	Ubicacio ubicacio18 = new Ubicacio(118, "Universitat");
+    	Ubicacio ubicacio19 = new Ubicacio(119, "Vall d'Hebron");
+    	Ubicacio ubicacio20 = new Ubicacio(120, "Zona Franca");
     	
-        SenyalTransit[] senyals = new SenyalTransit[20];
-        Random random = new Random();
+
+        // Creem alguns codis per a les senyals
+        Codi codiAdvertencia = new Codi(1, Codi.ADVERTENCIA);
+        Codi codiReglamentacio = new Codi(2, Codi.REGLAMENTACIO);
+        Codi codiIndicacio = new Codi(3, Codi.INDICACIO);
+
+        // Creem les senyals de trànsit
+        Advertencia advertencia1 = new Advertencia(codiAdvertencia, ubicacio1, 2020, "Perill de gel");
+        Reglamentacio reglamentacio1 = new Reglamentacio(codiReglamentacio, ubicacio2, 2019, "Stop");
+        Indicacio indicacio1 = new Indicacio(codiIndicacio, ubicacio3, 2021, "Direcció Barcelona");
         
-       
+        // Provem el mètode toString() de les senyals
+        System.out.println("=== Provant el mètode toString() de 3 senyals ===");
+        System.out.println(advertencia1);
+        System.out.println(reglamentacio1);
+        System.out.println(indicacio1);
+
+        // Provem el mètode area() de les senyals
+        System.out.println("\n=== Provant el mètode area() de les senyals ===");
+        System.out.println("Àrea de l'advertència: " + advertencia1.area());
+        System.out.println("Àrea de la reglamentació: " + reglamentacio1.area());
+        System.out.println("Àrea de la indicació: " + indicacio1.area());
+
+        // Provem el mètode retirarViaPublica()
+        
+        System.out.println("\n=== Provant el mètode retirarViaPublica() ===");
+        System.out.println("Advertència retirada de la via pública: " + advertencia1.retirarViaPublica());
+        System.out.println("Reglamentació retirada de la via pública: " + reglamentacio1.retirarViaPublica());
+        System.out.println("Indicació retirada de la via pública: " + indicacio1.retirarViaPublica());
+
+        // Provem el mètode canviarUbicacio()
+        System.out.println("\n=== Provant el mètode canviarUbicacio() ===");
+        System.out.println("Canviant ubicació de l'advertència a una nova ubicació: " + advertencia1.canviarUbicacio(ubicacio2));
+        System.out.println("Canviant ubicació de la reglamentació a una nova ubicació: " + reglamentacio1.canviarUbicacio(ubicacio3));
+        System.out.println("Canviant ubicació de la indicació a una nova ubicació: " + indicacio1.canviarUbicacio(ubicacio1));
+
+        // Provem la classe Poblacio
+        System.out.println("\n=== Provant la classe Poblacio ===");
         Poblacio poblacio = new Poblacio(10, "Barcelona");
 
-        for (int i = 0; i < senyals.length; i++) {
-            int identificador = i; 
-            int tipus = random.nextInt(1,4); 
-            Codi codi = new Codi(identificador, tipus); 
-            Ubicacio ubicacio = new Ubicacio(random.nextInt(10), NOM_CARRERS[random.nextInt(NOM_CARRERS.length)]);
-            int anyColocacio = 2000 + random.nextInt(23);
-            String significat = "Significat " + i;
+        // Afegim ubicacions a la població
+        System.out.println("Afegint ubicacions a la població...");
+        poblacio.afegirUbicacio(ubicacio1);  
+        poblacio.afegirUbicacio(ubicacio2);
+        poblacio.afegirUbicacio(ubicacio3);
+        poblacio.afegirUbicacio(ubicacio4);
+        poblacio.afegirUbicacio(ubicacio5);
+        poblacio.afegirUbicacio(ubicacio6);
+        poblacio.afegirUbicacio(ubicacio7);
+        poblacio.afegirUbicacio(ubicacio8);
+        poblacio.afegirUbicacio(ubicacio9);
+        poblacio.afegirUbicacio(ubicacio10);
+        poblacio.afegirUbicacio(ubicacio11);
+        poblacio.afegirUbicacio(ubicacio12);
+        poblacio.afegirUbicacio(ubicacio13);
+        poblacio.afegirUbicacio(ubicacio14);
+        poblacio.afegirUbicacio(ubicacio15);
+        poblacio.afegirUbicacio(ubicacio16);
+        poblacio.afegirUbicacio(ubicacio17);
+        poblacio.afegirUbicacio(ubicacio18);
+        poblacio.afegirUbicacio(ubicacio19);
+        poblacio.afegirUbicacio(ubicacio20);
+        poblacio.afegirUbicacio(ubicacio21);
+  
+        // Mostrem les ubicacions afegides
+        System.out.println("\nUbicacions a la població:");
+        System.out.println(poblacio);
 
-            
-            poblacio.afegirUbicacio(ubicacio);
+        // Provem el mètode eliminarUbicacio()
+        System.out.println("\n=== Provant el mètode eliminarUbicacio(Ubicacio B) ===");
+        System.out.println("Eliminant ubicació: " + poblacio.eliminarUbicacio(ubicacio2));
+        System.out.println("Ubicacions després d'eliminar:");
+        System.out.println(poblacio);
 
-            if (random.nextBoolean()) {
-                senyals[i] = new Advertencia(codi, ubicacio, anyColocacio, significat);
-            } else {
-                senyals[i] = new Reglamentacio(codi, ubicacio, anyColocacio, significat, random.nextDouble() * 100);
-            }
-        }
+        // Provem el mètode quantes() per comptar senyals
+        System.out.println("\n=== Provant el mètode quantes() ===");
+        System.out.println("Quantitat d'advertències: " + poblacio.quantes(Codi.ADVERTENCIA));
+        System.out.println("Quantitat de reglamentacions: " + poblacio.quantes(Codi.REGLAMENTACIO));
+        System.out.println("Quantitat d'indicacions: " + poblacio.quantes(Codi.INDICACIO));
 
-        provarMetodesPoblacio(poblacio);
-        mostrarSenyals(senyals);
-    }
+        // Provem el mètode eliminarUbicacio() sense paràmetres
+        System.out.println("\n=== Provant el mètode eliminarUbicacio() sense paràmetres ===");
+        System.out.println("Ubicacions eliminades: " + poblacio.eliminarUbicacio());
 
-    public static void mostrarSenyals(SenyalTransit[] senyals) {
-        for (SenyalTransit senyal : senyals) {
-            System.out.println(senyal);
-        }
-    }
-
-    public static void provarMetodesPoblacio(Poblacio poblacio) {
-        System.out.println("\n=== Pruebas de métodos de Poblacio ===");
-        
-        // Probar getNom
-        System.out.println("Nombre de la población: " + poblacio.getNom());
-        
-        // Probar getQuants con letra específica
-        System.out.println("Ubicaciones que empiezan con 'C': " + poblacio.getQuants('C'));
-        
-        // Probar getQuants total
-        System.out.println("Total de ubicaciones: " + poblacio.getQuants());
-        
-        // Probar quantes para cada tipo de señal
-        System.out.println("Señales de Advertencia: " + poblacio.quantes(Codi.ADVERTENCIA));
-        System.out.println("Señales de Reglamentación: " + poblacio.quantes(Codi.REGLAMENTACIO));
-        System.out.println("Señales de Indicación: " + poblacio.quantes(Codi.INDICACIO));
-        
-        // Probar toString de la población
-        System.out.println("\nListado de ubicaciones por inicial:");
-        System.out.println(poblacio.toString());
-        
-        // Probar eliminarUbicacio
-        System.out.println("Ubicaciones eliminadas sin señales: " + poblacio.eliminarUbicacio());
-        
-        // Crear y probar eliminar una ubicación específica
-        Ubicacio ubicacioTest = new Ubicacio(5, "Carrer de Prova");
-        if (poblacio.afegirUbicacio(ubicacioTest)) {
-            System.out.println("Ubicación de prueba añadida");
-            if (poblacio.eliminarUbicacio(ubicacioTest)) {
-                System.out.println("Ubicación de prueba eliminada correctamente");
-            }
-        }
+        // Mostrem les ubicacions després d'eliminar
+        System.out.println("\nUbicacions després d'eliminar les que no tenen senyals:");
+        System.out.println(poblacio);
     }
 }
